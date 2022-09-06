@@ -1,18 +1,21 @@
-﻿$server = 'Sam-PC\SQL2019'
-$database = 'ez911Data'
-$temp_path = 'C:\Backup\temp'
-$backup_path = 'C:\Backup\ez911Data'
+﻿$server = 'WIN-BN6CUL2T301\SQLSTANDARD2019'
+$database = 'ezEnterpriseDodgeGa'
+$temp_path = 'E:\Backup\temp'
+$backup_path = 'E:\Backup\ezEnterpriseDodgeGa'
+
 
 New-Item -ItemType Directory -Force -Path C:\Backup\Temp
-New-Item -ItemType Directory -Force -Path C:\Backup\ez911Data
+New-Item -ItemType Directory -Force -Path C:\Backup\ezEnterpriseDodgeGa
 
 # Backup database and compresses it. 
 
 Backup-DbaDatabase -SqlInstance $server -Database $database -Path $temp_path -Type Full -CompressBackup
 
-# Move temp folder to ez911Data folder
 
-Get-ChildItem -Path $temp_path -Recurse | Move-Item -Destination $backup_path
+Move temp folder to ez911Data folder
+
+Get-ChildItem -Path $temp_path -Recurse | Move-Item -Destination $backup_path 
+
 
 # Filter
 
